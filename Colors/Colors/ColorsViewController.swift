@@ -31,15 +31,42 @@ class ColorsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "colorCell", for: indexPath)
+        let cellBackgroundColor = determineCellBackgroundColor(cellForRowAt: indexPath)
         
         cell.textLabel?.text = colors[indexPath.row]
         
-        cell.backgroundColor = UIColor.green
+        cell.backgroundColor = cellBackgroundColor
         
         return cell
     }
     
+    func determineCellBackgroundColor(cellForRowAt indexPath: IndexPath) -> UIColor {
+        
+        let cellBackgroundColor = colors[indexPath.row]
+        
+        switch cellBackgroundColor {
+            
+            case "red":
+                return UIColor.red
+            case "orange":
+                return UIColor.orange
+            case "yellow":
+                return UIColor.yellow
+            case "green":
+                return UIColor.green
+            case "blue":
+                return UIColor.blue
+            case "purple":
+                return UIColor.purple
+            case "brown":
+                return UIColor.brown
+            default:
+                return UIColor.white
+            
+        }
+    }
 
     /*
     // MARK: - Navigation
